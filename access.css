@@ -1,0 +1,171 @@
+@charset "utf-8";
+
+.title{
+    height: 310px;
+    background-image: url(../images/access/bg-main.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-shadow: 1px 1px 10px #4b2c14;
+}
+
+.title h1{
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title p{
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+.main h2{
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.main h2::after{
+    content: '';
+    /* 要素もどきを生成する */
+    display: block;
+    /* ブロックレベルコンテンツに変換（要素の高さ・幅を設定するため） */
+    width: 36px;
+    height: 3px;
+    background-color: #000;
+    margin-top: 20px;
+}
+
+.map,
+.contact{
+    width: 930px;
+    max-width: 90%;
+    /* 930pxより小さいデバイス幅の時は90%の幅になる */
+    margin: 75px auto 0;
+    /* margin 上　左右　下 */
+}
+
+.map iframe{
+    display: block;
+    width: 100%;
+    height: 320px;
+    margin-top: 25px;
+}
+
+.form-area{
+    background-color: #f8f8f8;
+    border: 1px solid #aaaaaa;
+    margin-top: 25px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;    /* フレックスで入りきらなかったら下に落ちる */
+}
+
+.form-area dt{
+    width: 200px;
+    padding: 15px 0;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.form-area dt .required::after{
+    content: "必須";
+    font-size: 11px;
+    color: #eb4f32;
+    margin-left: 10px;
+}
+
+.form-area dd{
+    width: calc(100% - 200px);
+    /* 横幅100%からdtの200px引いた残り */
+    padding: 15px 0;
+}
+
+.input-text{
+    width: 100%;
+    max-width: 280px;
+    height: 40px;
+    padding: 0 10px 0 10px;
+}
+
+.select-box{
+    width: 200px;
+    height: 40px;
+}
+
+.radio-button{
+    display: block;
+    margin-top: 20px;
+}
+
+.radio-button:first-child{
+    margin-top: 0;
+}
+
+.radio-button input{
+    margin-right: 8px;
+}
+
+.message{
+    width: 100%;
+    height: 260px;
+    padding: 10px;
+    line-height: 1.5;
+}
+
+.confirm-text{
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 30px;
+}
+
+.submit-button{
+    background-color: #f4dd64;
+    display: inline-block;
+    min-width: 180px;    /* 幅は180px以下にはならない */
+    line-height: 48px;    /* ボタンの高さをline-heightで設定することで中のテキストを上下センターに */
+    border-radius: 24px;    /* 角丸　line-heightの半分 */
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    text-align: center;    /* ボタンの中の文字をセンターに */
+    margin-top: 20px;
+    cursor: pointer;    /* 強制的にカーソルを指マークに */
+    border: none;
+}
+
+.submit-button:hover{
+    background-color: #d8b500;
+}
+
+.footer{
+    margin-top: 100px;
+}
+
+
+@media (max-width: 800px) {
+    .map,
+    .contact{
+        width: 500px;
+        margin-top: 45px;
+    }
+
+    .form-area dt,
+    .form-area dd{
+        width: 100%;
+    }
+
+    .form-area dt{
+        padding-bottom: 0;
+    }
+
+    .submit-button{
+        width: 100%;
+    }
+}

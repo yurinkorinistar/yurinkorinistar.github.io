@@ -1,0 +1,229 @@
+@charset "utf-8";
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.title h1{
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.title p{
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* コンテンツエリア全体 */
+.shop-contents{
+    width: 1080px;
+    max-width: 90%;
+    margin: 75px auto 0;    /* 2カラムの横並びを作る */
+    display: flex;
+    justify-content: space-between;    /* 均等配置 */
+    flex-direction: row-reverse;    /* 並び順を逆転する */
+}
+
+.shop-item{
+    flex-grow: 1;
+    max-width: 765px;
+}
+
+.shop-item h2{
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 30px;
+}
+
+.shop-item h2::after{
+    content: '';
+    /* 要素もどきを生成する */
+    display: block;
+    /* ブロックレベルコンテンツに変換（要素の高さ・幅を設定するため） */
+    width: 36px;
+    height: 3px;
+    background-color: #000;
+    margin-top: 20px;
+}
+
+/* 商品グリッドを並べる */
+.item-list{
+    margin-top: 25px;    /* グリッドレイアウトを設定 */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px);    /* 横方向の並ぶサイズ　auto-fitで拡張設定 */
+    column-gap: 50px;    /* 商品と商品の間の隙間 */
+    row-gap: 40px;    /* 行方向の商品と商品の隙間 */
+}
+
+/* .item-list li:nth-child(even) a{
+    background: #f4dd64;
+} */
+
+/* リンクのa要素全体をクリックできるようにする */
+.item-list a{
+    display: block;
+    transition-duration: 0.2s;
+    /* 0.2秒で拡大する */
+}
+
+.item-list a:hover{
+    transform: scale(1.05);
+    /* マウスが商品に乗った時に、105%拡大する */
+}
+
+.item-list dl{
+    margin-top: 20px;
+}
+
+.item-list dt{
+    font-weight: bold;
+}
+
+.item-list dd{
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+
+.shop-menu{
+    flex-shrink: 0;    /* 縮まない */
+    margin-right: 60px;
+    position: relative;    /* 基準位置の設定 */
+}
+
+.shop-menu-inner{
+    position: sticky;    /* 上部に止まるポジション設定 */
+    top: 30px;
+    left: 0;
+    right: 0;
+}
+
+.shop-menu-inner h2{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.shop-menu-inner ul{
+    list-style: disc;
+    margin: 20px 0 0 20px;
+}
+
+.shop-menu-inner li{
+    font-size: 14px;
+    margin-top: 15px;
+}
+
+/* shop-detailのページ用 */
+.item-area{
+    margin-top: 20px;
+    display: flex;
+}
+
+.item-area img{
+    width: 50%;
+    max-width: 380px;
+}
+
+.about-item{
+    margin-left: 30px;
+}
+
+.about-item .item-text{
+    font-size: 14px;
+    line-height: 26px;
+}
+
+.about-item .item-price{
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.about-item a{
+    background-color: #f4dd64;
+    display: inline-block;
+    min-width: 180px;    /* 幅は180px以下にはならない */
+    line-height: 48px;    /* ボタンの高さをline-heightで設定することで中のテキストを上下センターに */
+    border-radius: 24px;    /* 角丸　line-heightの半分 */
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 35px;
+}
+
+.about-item a:hover{
+    background-color: #d8b500;
+    /* マウスが乗った時のスタイル */
+}
+
+/* recommendedエリアの設定 */
+.recommended{
+    margin-top: 60px;
+}
+
+.footer{
+    margin-top: 100px;
+}
+
+@media (max-width: 800px) {
+    .shop-contents{
+        display: block;
+        max-width: 100%;
+        margin-top: 60px;
+    }
+
+    .shop-item{
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .item-list{
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 35px;
+    }
+
+    .shop-menu{
+        background-color: #f8f8f8;
+        padding: 50px 0;
+        margin: 60px 0 0;
+    }
+
+    .shop-menu-inner{
+        max-width: 540px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+/* shop-detailのページ */
+
+    .item-area{
+        display: block;
+    }
+
+    .item-area img{
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .about-item{
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .about-item a{
+        width: 100%;
+    }
+
+    .footer{
+        margin-top: 0;
+    }
+}

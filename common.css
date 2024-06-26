@@ -1,0 +1,233 @@
+@charset "utf-8";
+
+:root{
+    --buttonColor: #f4dd64;
+}
+
+*,
+::before,
+::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;  /* ボックスモデルの計算にpaddingとborder幅を入れる */
+}
+
+ul,
+ol{
+    list-style: none;    /* リスト希望の削除 */
+}
+a{
+    color: inherit;    /* 親要素の色を継承する */
+    text-decoration: none;    /* リンクの下線を消す */
+}
+body{
+    font-family: sans-serif;    /* サンセリフ体を基本にします */
+    font-size: 16px;    /* 文字の基本サイズ = 1rem; */
+    color: #000;    /* ＃00（ｒ）00（ｇ）00（ｂ） */
+    line-height: 1;    /* 行高設定　単位がない場合は倍率    文章の場合は、1.7～1.8 */
+    background-color: #fff;    /* 背景色を白に */
+}
+img{
+    max-width: 100%;
+    height: auto;    /* 画像を外の枠が変わると伸び縮みする */
+}
+
+/* ヘッダーの設定 */
+.header-inner{
+    max-width: 1200px;    /* 最大1200pxまでしか広がらない */
+    height: 110px;    /* 高さ */
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;    /* ボックス要素を横並びに */
+    justify-content: space-between;    /* 要素を均等配置 */
+    align-items: center;    /* 要素の上下をセンター揃え */
+}
+.toggle-menu-button,
+#Hbg,
+#Hbg+label{
+    /* ハンバーガーメニューをパソコンで非表示 */
+    display: none;
+}
+
+.header-logo{
+    display: block;    /* 画像をブロック要素に変換 */
+    width: 170px;
+}
+
+.header-logo img{
+    filter: drop-shadow(0 3px 2px #999);    
+}
+
+.site-menu ul{
+display: flex;/* メニュー項目の横並び */
+}
+.site-menu ul li{
+    margin: 0 20px;    /* メニュー項目の左右にmarginを入れて隙間を確保 */
+}
+.site-menu ul li a{
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+}
+
+/* フッターの設定 */
+.footer{
+    color: #fff;
+    background-color: #24211b;
+    padding: 30px 0 15px 0;    /* 縦並び */
+    display: flex;
+    flex-direction: column;    /* 並べる方向を縦に */
+    align-items: center;    /* 左右をセンターに */
+}
+.footer-logo{
+display: block;
+width: 235px;
+margin-top: 90px;
+}
+.footer-tel{
+    font-size: 26px;
+    font-weight: bold;    /* フォントの太さ */
+    margin-top: 28px;
+}
+.footer-time{
+    font-size: 13px;
+    margin-top: 16px;
+}
+.copyright{
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 90px;
+}
+
+@media (max-width: 800px) {
+    .site-menu ul{
+        display: block;
+        text-align: center;
+    }
+
+    .site-menu ul li{
+        margin-top: 20px;
+    }
+
+    .header{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        height: 50px;
+        z-index: 9999;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-inner{
+        padding: 0 20px;
+        height: 100%;
+        position: relative;
+    }
+
+    .header-logo{
+        width: 100px;
+    }
+
+
+    #Hbg+label{
+        display: block;
+    }
+
+
+    #Hbg+label{
+        width: 30px;
+        aspect-ratio: 4/3;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    #Hbg+label span,
+    #Hbg+label span::before,
+    #Hbg+label span::after{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #000;
+        transition: .5s;
+    }
+
+    #Hbg+label span::before,
+    #Hbg+label span::after{
+        position: absolute;
+    }
+
+    #Hbg+label span::before{
+        top: 0;
+    }
+
+    #Hbg+label span::after{
+        bottom: 0;
+    }
+
+    #Hbg:checked+label span{
+        background: transparent;
+    }
+
+    #Hbg:checked+label span::before{
+        transform: rotate(45deg);
+        top: calc(50% - 1px);
+    }
+    
+    #Hbg:checked+label span::after{
+        transform: rotate(-45deg);
+        bottom: calc(50% - 1px);
+    }
+
+    .header-site-menu{
+        position: absolute;
+        top: 100%;
+        left: 100%;
+        width: 75%;
+        color: #fff;
+        background-color: #736e62;
+        padding: 30px 0 50px;
+        transition: .5s;
+    }
+
+    #Hbg:checked ~ .header-site-menu{
+        left: 25%;
+    }
+
+    /* .toggle-menu-button{
+        display: block;
+        width: 44px;
+        height: 34px;
+        background-image: url(../images/common/icon-menu.png);
+        background-size: 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        outline: none;
+    } */
+
+    /* .header-site-menu.is-show{
+        display: block;
+    } */
+
+    .main{
+        padding-top: 50px;
+    }
+
+    .footer-logo{
+        margin-top: 60px;
+    }
+
+    .footer-tel{
+        font-size: 20px;
+    }
+
+    .copyright{
+        margin-top: 50px;
+    }
+}

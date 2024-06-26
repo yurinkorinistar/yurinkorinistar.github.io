@@ -1,0 +1,264 @@
+@charset "utf-8";
+
+.first-view{
+    height: calc(100vh - 110px);
+    /* 画面いっぱいの高さ
+    100vh画面高さいっぱい
+    50vh画面の半分まで
+    ヘッダーの高さを足して100vhになるようにヘッダーの高さを引き算します */
+    /* background-image: url(../images/index/bg-main.jpg);
+    background-repeat: no-repeat;    背景の繰り返しをなし
+    background-position: center center;    背景位置を上下左右センター
+    background-size: cover;    エリア全体を画像で覆う */
+
+    background: url(../images/index/bg-main.jpg) no-repeat center/cover fixed;
+    /* background-blend-mode: multiply; */
+    /* background-attachment: fixed; */
+
+    /* 上下センターに持ってくるテクニック */
+    display: flex;
+    align-items: center;
+}
+
+.first-view-text{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 80px 40px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 10px #4b2c14;    /* text-shadow：x方向のずれ　y方向のずれ　ボケ具合　色 */
+}
+
+.first-view-text h1{
+    font-family: "Montserrat", sans-serif;
+    font-size: 56px;
+    line-height: 72px;
+}
+
+.first-view-text p{
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* 導入文エリア */
+.lead{
+    max-width: 1200px;        /* 最大幅1200px */
+    margin: 60px auto;
+}
+
+.lead p{
+    line-height: 2;
+    text-align: center;
+}
+
+.link-button-area{
+    text-align: center;
+    margin-top: 40px;
+}
+
+.link-button{
+    /* background-color: ver(--buttonColor); */
+    background-color: #f4dd64;
+    display: inline-block;
+    min-width: 180px;    /* 幅は180px以下にはならない */
+    line-height: 48px;    /* ボタンの高さをline-heightで設定することで中のテキストを上下センターに */
+    border-radius: 24px;    /* 角丸　line-heightの半分 */
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+
+.link-button:hover{
+    background-color: #d8b500;
+    /* link-buttonにマウスが乗った時のスタイル */
+}
+
+
+
+/* レコメンド */
+.recommended{
+    background-color: #f8f8f8;
+    padding: 45px 0 55px 0;
+}
+
+.recommended h2{
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* .recommended h2::before{
+    content: '★';
+} */
+
+.recommended h2::after{
+    content: '';    /* before　afterとセットで使われる */
+    display: block;    /* インライン要素をブロック要素に */
+    width: 36px;
+    height: 3px;
+    background-color: #000;
+    margin: 20px auto 0;
+}
+
+.item-list{
+    display: flex;
+    padding: 40px 60px 10px;
+    overflow-x: scroll;
+    counter-reset: num 0;
+}
+
+.item-list li{
+    flex-shrink: 0;
+    width: 260px;
+    margin-left: 75px;
+    position: relative;
+}
+
+/* .item-list li::before{
+    counter-increment: num 1;
+    content: counter(num,decimal-leading-zero);
+    display: block;
+    background: #4b2c14;
+    color: #fff;
+    position: absolute;
+    top: -.5em;
+    left: -.5em;
+    padding: .5em;
+    font-size: 2em;
+    border-radius: 50%;
+} */
+
+.item-list li:first-child{
+    /* 最初の要素カフェラテの左余白をとる */
+    margin-left: 0;
+}
+
+.item-list li img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+}
+
+.item-list dl{
+    margin-top: 20px;
+}
+
+.item-list dt{
+    font-weight: bold;
+}
+
+.item-list dd{
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+.item-list .price{
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+html{
+    overflow-y: scroll;
+    /* 初めからスクロールバーの領域を表示しておく */
+}
+
+body{
+    height: 100vh;
+    overflow: hidden;
+    /* アニメーションが動いている間はスクロールできないように設定 */
+    animation: bodyHeight 0s 3.5s both;
+}
+
+@keyframes bodyHeight {
+    100%{
+        height: auto;
+        overflow: visible;
+    }
+}
+
+.open{
+    background: #fff;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    display: flex;
+    animation: openDiv 1s 2.5s both;
+    /* duration、delay、fill-modeを設定 */
+    /* timing-function（初期値ease）、iteration-count、play-state、directionは初期値のため省略 */
+}
+
+.open img{
+    margin: auto;
+    width: 50%;
+    max-width: 340px;
+    animation: openImg 1s .5s both;
+    /* duration、delay、fill-modeを設定 */
+    /* timing-function（初期値ease）、iteration-count、play-state、directionは初期値のため省略 */
+}
+
+@keyframes openDiv {
+    0%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes openImg {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@media (max-width: 800px) {
+    .first-view{
+        height: calc(100vh - 50px);
+        background-image: url(../images/index/bg-main-sp.jpg);
+        align-items: flex-start;
+    }
+
+    .first-view-text{
+        padding: 60px 0 0 20px;
+    }
+
+    .first-view-text h1{
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .first-view-text p{
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .lead{
+        padding: 0 20px;
+    }
+
+    .lead p{
+        text-align: left;
+    }
+
+    /* レコメンド */
+
+    .item-list{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .item-list li{
+        width: 220px;
+        margin-left: 30px;
+    }
+
+}
